@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/size_text_view"
+        style="@style/RepositoryDetailsTextViewStyle" />
+
+    <TextView android:id="@+id/stargazers_count_text_view"
+        style="@style/RepositoryDetailsTextViewStyle" />
+
+    <TextView android:id="@+id/forks_count_text_view"
+        style="@style/RepositoryDetailsTextViewStyle" />
+
+    <TextView android:id="@+id/contributor_text_view"
+        style="@style/RepositoryDetailsTextViewStyle"
+        android:text="@string/contributors" />
+
+    <android.support.v7.widget.RecyclerView android:id="@+id/contributors_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"/>
+
+    <ProgressBar android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+</LinearLayout>

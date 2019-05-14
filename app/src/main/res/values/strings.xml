@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GitHubApp</string>
+    <string name="contributors">Contributors:</string>
+    <string name="starting_id">%1$s.&#160;</string>
+</resources>
