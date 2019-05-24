@@ -2,4 +2,6 @@
     <string name="app_name">GitHubApp</string>
     <string name="contributors">Contributors:</string>
     <string name="starting_id">%1$s.&#160;</string>
+    <string name="user_avatar">UserAvatar</string>
+    <string name="user_name">User Name</string>
 </resources>

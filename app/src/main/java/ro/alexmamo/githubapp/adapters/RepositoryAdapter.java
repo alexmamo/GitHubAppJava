@@ -34,7 +34,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
     @Override
     public void onBindViewHolder(@NonNull RepositoryViewHolder repositoryViewHolder, int position) {
         Repository repository = repositoryList.get(position);
-        repositoryViewHolder.bind(repository);
+        repositoryViewHolder.bindRepository(repository);
     }
 
     @Override
@@ -42,30 +42,23 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
         return repositoryList.size();
     }
 
-    class RepositoryViewHolder extends RecyclerView.ViewHolder {
-        View itemView;
+    class RepositoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView idTextView;
         TextView nameTextView;
         TextView fullNameTextView;
 
         RepositoryViewHolder(View itemView) {
             super(itemView);
-            this.itemView = itemView;
+            itemView.setOnClickListener(this);
             idTextView = itemView.findViewById(R.id.id_text_view);
             nameTextView = itemView.findViewById(R.id.name_text_view);
             fullNameTextView = itemView.findViewById(R.id.full_name_text_view);
         }
 
-        private void bind(Repository repository) {
+        private void bindRepository(Repository repository) {
             setIdTextView(repository.id);
             setNameTextView(repository.name);
             setIdFullNameView(repository.fullName);
-
-            itemView.setOnClickListener(view -> {
-                Intent repositoryActivityIntent = new Intent(context, RepositoryActivity.class);
-                repositoryActivityIntent.putExtra("repository", repository);
-                context.startActivity(repositoryActivityIntent);
-            });
         }
 
         private void setIdTextView(String id) {
@@ -78,6 +71,19 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
 
         private void setIdFullNameView(String fullName) {
             fullNameTextView.setText(fullName);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getLayoutPosition();
+            Repository clickedRepository = repositoryList.get(position);
+            goToRepositoryActivity(clickedRepository);
+        }
+
+        private void goToRepositoryActivity(Repository repository) {
+            Intent repositoryActivityIntent = new Intent(context, RepositoryActivity.class);
+            repositoryActivityIntent.putExtra("repository", repository);
+            context.startActivity(repositoryActivityIntent);
         }
     }
 }
